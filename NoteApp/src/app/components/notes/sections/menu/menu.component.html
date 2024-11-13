@@ -1,0 +1,20 @@
+<form [formGroup]="form" class="flex flex-col p-4 gap-4">
+  <input type="text"
+    formControlName="searchTerm"
+    class="w-full text-md font-medium m-0
+    text-slate-800 border border-gray-300 px-4 py-3 rounded-lg outline-slate-400 
+    dark:bg-slate-500 dark:border-gray-700 dark:text-white dark:outline-slate-500 dark:placeholder:text-slate-300"
+    placeholder="Buscar..." />
+
+  <button class="flex items-center justify-center w-fit ps-3 py-2 pe-4 rounded-md space-x-2
+  bg-slate-700 text-white hover:bg-slate-800 focus:outline-none
+  dark:bg-slate-100 dark:text-black dark:hover:bg-slate-200">
+    <i-lucide name="plus" class="p-0 m-0"></i-lucide>
+    <span class="text-lg font-medium" (click)="openAddModal()">Agregar Nueva Nota</span>
+  </button>
+</form>
+
+<app-manage-note 
+*ngIf="addModalVisible" 
+(close)="closeModal($event)">
+</app-manage-note>

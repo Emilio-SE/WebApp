@@ -1,0 +1,62 @@
+<div class="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
+  <div class="rounded-lg shadow-lg w-full max-w-md p-6
+  bg-gray-100 
+  dark:bg-gray-700">
+
+  <div class="flex justify-between items-center border-b pb-3 mb-4">
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+        {{ noteId ? 'Editar nota' : 'Agregar nota' }}
+      </h3>
+      <button (click)="closeModal(false)" class="text-gray-400 hover:bg-gray-200 rounded-lg p-1">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <form class="max-h-[50vh] overflow-y-auto min-h-[50vh] flex flex-col" 
+    [formGroup]="form">
+      <div class="mb-4 p-1">
+
+        <input
+          type="text"
+          placeholder="Título"
+          formControlName="title"
+          class="w-full text-md font-medium m-0 px-4 py-3 rounded-lg
+          text-slate-800 border border-gray-300 outline-slate-400 placeholder:text-slate-500
+          dark:bg-slate-500 dark:border-gray-700 dark:text-white dark:outline-slate-500 dark:placeholder:text-slate-300"
+        
+          required
+        />
+      </div>
+      <div class="mb-4 p-1 flex flex-1">
+        <textarea
+          placeholder="Contenido"
+          formControlName="note"
+          style="resize: none;"
+          class=" w-full text-md font-medium m-0 px-4 py-3 rounded-lg flex-1
+          text-slate-800 border border-gray-300 outline-slate-400 placeholder:text-slate-500
+          dark:bg-slate-500 dark:border-gray-700 dark:text-white dark:outline-slate-500 dark:placeholder:text-slate-300"
+          rows="4"
+          required
+        ></textarea>
+      </div>
+
+      <div class="flex p-1 gap-6">
+        <button  class="w-full px-4 py-2 font-medium rounded-md
+        bg-slate-700 text-white hover:bg-slate-800 focus:outline-none
+        dark:bg-slate-100 dark:text-black dark:hover:bg-slate-200"
+        (click)="saveNote()">
+          {{ noteId ? 'Editar' : 'Agregar' }}
+        </button>
+
+        <button class="w-full px-4 py-2 font-medium rounded-md
+        bg-slate-300 text-black hover:bg-slate-400 focus:outline-none
+        dark:bg-slate-400 dark:text-gray-900 dark:hover:bg-slate-500"
+        (click)="closeModal(false)">
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

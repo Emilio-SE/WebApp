@@ -1,0 +1,41 @@
+@if (note) {
+<div class="p-4 border rounded-md shadow-md 
+ bg-white
+ dark:bg-slate-700 dark:border-gray-600 dark:text-white">
+  <div class="flex justify-between">
+    <h3 class="text-lg font-bold text-black dark:text-white"> {{note.title}} </h3>
+  </div>
+  <p class="text-gray-600 dark:text-gray-300 mt-2 overflow-hidden whitespace-nowrap overflow-ellipsis">
+    {{note.note}} 
+  </p>
+  <div class="mt-4 flex space-x-4">
+    <button class="px-4 py-2 font-medium rounded-md
+    bg-slate-700 text-white hover:bg-slate-800 focus:outline-none
+    dark:bg-slate-100 dark:text-black dark:hover:bg-slate-200" 
+    (click)="openDetailsModal()">
+      <i-lucide name="eye" class="p-0 m-0"></i-lucide>
+    </button>
+    <button class="px-4 py-2 font-medium rounded-md
+    bg-slate-300 text-black hover:bg-slate-400 focus:outline-none
+    dark:bg-slate-400 dark:text-gray-900 dark:hover:bg-slate-500" 
+    (click)="openEditModal()">
+      <i-lucide name="edit" class="p-0 m-0"></i-lucide>
+    </button>
+    <button class="px-4 py-2 font-medium text-white rounded-md
+    bg-red-500 hover:bg-red-600 focus:outline-none
+    dark:bg-red-500 dark:hover:bg-red-600 dark:text-white"
+    (click)="openDeleteModal()">
+      <i-lucide name="trash2" class="p-0 m-0"></i-lucide>
+    </button>
+  </div>
+</div>
+}@else {
+<div class="p-4 border rounded-md shadow-md 
+ bg-white
+ dark:bg-slate-700 dark:border-gray-600 dark:text-white">
+  <div class="flex justify-between">
+    <h3 class="text-lg font-bold text-black dark:text-white">Oops!</h3>
+  </div>
+  <p class="text-gray-600 dark:text-gray-300 mt-2">Nota no proporcionada</p>
+</div>
+}

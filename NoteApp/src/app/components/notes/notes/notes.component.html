@@ -1,0 +1,53 @@
+<div class="bg-gray-100 h-screen dark:bg-zinc-900">
+  <app-header></app-header>
+  <app-menu></app-menu>
+
+  <div class="px-4">
+    <h2 class="text-xl font-semibold mb-4
+  dark:text-white">Todas las Notas</h2>
+  </div>
+
+  <ng-container *ngIf="notes | notesPipe: searchTerm as filteredNotes">
+
+    @if (filteredNotes.length === 0) {
+    <div class="p-4 grid">
+      <div class="p-4 grid grid-cols-1 border rounded-md shadow-md
+     bg-white 
+     dark:bg-slate-700 dark:border-gray-600 dark:text-white">
+        <div class="flex justify-between">
+          <h3 class="text-lg font-bold text-black dark:text-white">Sin notas</h3>
+        </div>
+        <p class="text-gray-600 dark:text-gray-300 mt-2">No hay notas disponibles</p>
+      </div>
+    </div>
+    }@else {
+    <div class="p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      @for (note of filteredNotes; track note.noteId) {
+      <app-note [note]="note" (openDetails)="openDetails($event)" (openEdit)="openEdit($event)"
+        (openDelete)="openDelete($event)">
+      </app-note>
+      }
+    </div>
+
+    }
+
+  </ng-container>
+
+</div>
+
+
+<div *ngIf="isDetailsVisible && currentNote" class="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-50">
+  <app-note-details [note]="currentNote" (close)="closeDetails()">
+  </app-note-details>
+</div>
+
+
+<div *ngIf="isDeleteVisible">
+  <app-confirm-deletion (response)="confirmDeletion($event)">
+  </app-confirm-deletion>
+</div>
+
+<div *ngIf="isEditVisible && currentNote">
+  <app-manage-note [noteId]="currentNote.noteId" (close)="closeEdit($event)">
+  </app-manage-note>
+</div>

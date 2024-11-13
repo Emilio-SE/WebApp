@@ -1,0 +1,39 @@
+  <div class="min-h-screen flex fle-col items-center justify-center py-6 px-4 bg-gray-100">
+    <div class="flex justify-center gap-4 max-w-6xl w-full">
+      <div
+        class="border border-gray-300 rounded-lg p-6 max-w-md shadow-[0_2px_22px_-4px_rgba(93,96,127,0.2)] max-md:mx-auto bg-white w-full">
+        <form class="space-y-4" [formGroup]="form">
+          <div class="mb-8">
+            <h3 class="text-gray-800 text-3xl font-extrabold text-center">Iniciar sesión</h3>
+          </div>
+
+          <div>
+            <label class="text-gray-800 text-lg mb-2 block">Correo electrónico</label>
+            <div class="relative flex items-center">
+              <input formControlName="email" type="text" required (invalid)="email.invalid"
+                class="w-full text-md text-slate-800 border border-gray-300 px-4 py-3 rounded-lg outline-slate-400"
+                placeholder="Correo" />
+            </div>
+          </div>
+          <div>
+            <label class="text-gray-800 text-lg mb-2 block">Contraseña</label>
+            <div class="relative flex items-center">
+              <input formControlName="password" type="password" required
+                class="w-full text-md text-gray-800 border border-gray-300 px-4 py-3 rounded-lg outline-slate-400"
+                placeholder="Contraseña" />
+            </div>
+          </div>
+
+          <div class="!mt-8">
+            <button type="button" (click)="login()"
+              class="w-full shadow-xl py-3 px-4 text-lg tracking-wide rounded-lg text-white bg-slate-700 hover:bg-slate-800 focus:outline-none">
+              Iniciar sesión
+            </button>
+          </div>
+
+          <p class="text-sm !mt-8 text-center text-gray-800">¿No tienes una cuenta? <a routerLink="/create"
+              class="text-slate-900 font-semibold hover:underline ml-1 whitespace-nowrap">Registrare aquí</a></p>
+        </form>
+      </div>
+    </div>
+  </div>
