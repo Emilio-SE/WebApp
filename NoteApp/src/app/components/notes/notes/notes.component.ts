@@ -46,7 +46,6 @@ export class NotesComponent implements OnInit {
 
   private updateSearchTerm() {
     this._commSvc.searchTerm.subscribe((term: string) => {
-      console.log(term);
       this.searchTerm = term;
     });
   }

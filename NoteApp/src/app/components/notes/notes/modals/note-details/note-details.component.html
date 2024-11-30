@@ -19,9 +19,13 @@
         </button>
       </div>
 
-      <div class="p-4 space-y-4 md:p-5 max-h-[50vh] overflow-y-auto bg-white dark:bg-gray-800">
+      <div class="p-4  md:p-5 max-h-[50vh] overflow-y-auto bg-white dark:bg-gray-800">
         <ng-container *ngFor="let paragraph of note.note.split('\n'); let i = index">
+          @if(paragraph === ''){
+          <br>
+          }@else {
           <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300">{{ paragraph }}</p>
+          }
         </ng-container>
       </div>
 
